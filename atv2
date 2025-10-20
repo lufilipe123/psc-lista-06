@@ -1,0 +1,31 @@
+import java.util.Scanner;
+ 
+public class atv1 {
+
+    public static void main(String[] args){
+
+       Scanner scanner = new Scanner (System.in);
+
+       double[] num = new double[10];
+
+       for(int i = 0 ; i < num.length; i++){
+
+        System.out.print("digite os numeros: ");
+
+        num[i] = scanner.nextDouble();
+       }
+    
+       
+      System.out.println("Ordem inversa:");
+        for (int i = num.length - 1; i >= 0; i--) {
+            System.out.print(num[i] + " ");
+
+    scanner.close();
+
+    }
+
+    }
+}
+
+
+
