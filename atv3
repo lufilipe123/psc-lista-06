@@ -1,0 +1,36 @@
+import java.util.Scanner;
+ 
+public class atv3 {
+
+    public static void main(String[] args){
+
+       Scanner scanner = new Scanner (System.in);
+       double[] num = new double[4]; 
+       double soma = 0;
+
+       for(int i = 0 ; i < num.length; i++){
+
+        System.out.print("digite os numeros: ");
+
+        num[i] = scanner.nextDouble();
+        soma += num[i];
+    }
+    
+               
+        double media = soma / 4;
+    
+            
+            for(int i = 0; i < num.length; i++){
+                System.out.println("nota " + (i+1) + ":" + num[i]);
+            }
+            
+            
+        System.out.println("a media é " + media);
+ 
+        scanner.close();
+
+    }
+}
+
+
+
