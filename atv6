@@ -1,0 +1,68 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class atv6 {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double[] medias = new double[10];
+        int alunosAprovados = 0;
+        ArrayList<Integer> indicesAprovados = new ArrayList<>();
+
+        System.out.println("Digite as 4 notas de cada aluno:\n");
+
+        for(int i = 0; i < 10; i++) {
+            double soma = 0;
+            
+            System.out.println("ALUNO " + (i+1) + ":");
+            
+            for(int j = 0; j < 4; j++) {
+                System.out.print("  Nota " + (j+1) + ": ");
+                double nota = scanner.nextDouble();
+                
+                while(nota < 0 || nota > 10) {
+                    System.out.print("  Nota inválida! Digite uma nota entre 0 e 10: ");
+                    nota = scanner.nextDouble();
+                }
+                
+                soma += nota;
+            }
+            
+            medias[i] = soma / 4;
+            
+            if(medias[i] >= 7.0) {
+                alunosAprovados++;
+                indicesAprovados.add(i); 
+            }
+            
+            System.out.printf("→ Média: %.2f - %s\n\n", 
+                            medias[i], 
+                            medias[i] >= 7.0 ? "APROVADO" : "REPROVADO");
+        }
+
+        exibirRelatorio(medias, alunosAprovados, indicesAprovados);
+        scanner.close();
+    }
+    
+    public static void exibirRelatorio(double[] medias, int aprovados, ArrayList<Integer> indicesAprovados) {
+        System.out.println("RELATÓRIO FINAL");
+        
+        System.out.println("\nMÉDIAS DE TODOS OS ALUNOS:");
+        for(int i = 0; i < medias.length; i++) {
+            String status = medias[i] >= 7.0 ? "APROVADO" : "REPROVADO";
+            System.out.printf("Aluno %2d: %.2f - %s\n", (i+1), medias[i], status);
+        }
+        
+        System.out.println("ESTATÍSTICAS:");
+        System.out.println("Total de alunos: " + medias.length);
+        System.out.println("Alunos com média >= 7.0: " + aprovados);
+        System.out.println("Alunos com média < 7.0: " + (medias.length - aprovados));
+        
+        if(aprovados > 0) {
+            System.out.println("\nALUNOS APROVADOS:");
+            for(int index : indicesAprovados) {
+                System.out.printf("Aluno %d - Média: %.2f\n", (index+1), medias[index]);
+            }
+        }
+    }
+}
